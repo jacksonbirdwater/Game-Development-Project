@@ -1,0 +1,11 @@
+Model Information:
+* title:	CITY STREET RUNNER
+* source:	https://sketchfab.com/3d-models/city-street-runner-e9f984296a4d4b9eba096719103ffac7
+* author:	AperoLinaire (https://sketchfab.com/AperoLinairee)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "CITY STREET RUNNER" (https://sketchfab.com/3d-models/city-street-runner-e9f984296a4d4b9eba096719103ffac7) by AperoLinaire (https://sketchfab.com/AperoLinairee) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
