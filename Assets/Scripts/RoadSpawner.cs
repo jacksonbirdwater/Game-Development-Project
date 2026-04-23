@@ -3,30 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 
-
 public class RoadSpawner : MonoBehaviour
 {
     public List<GameObject> roads;
     [SerializeField] private float offset = 71.66f;
     private bool ready = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (roads != null && roads.Count > 0)
-        {
-            roads = roads.OrderBy(r => r.transform.position.z).ToList();
-        }
-
+        roads = roads.OrderBy(r => r.transform.position.z).ToList();
         StartCoroutine(EnableAfterFrame());
     }
 
     IEnumerator EnableAfterFrame()
     {
-        yield return null; // wait 1 frame
+        yield return null;
         ready = true;
     }
-
 
     public void MoveRoads()
     {
