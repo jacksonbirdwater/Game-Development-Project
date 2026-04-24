@@ -1479,6 +1479,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8926164291526522374, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
   m_PrefabInstance: {fileID: 235786963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &155329489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155329486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d104581392b3649b025f24f77b6bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Road
+  edgeObstacles:
+  - {fileID: 5328042917490890343, guid: 3b8ba49bb2d543c488a7e7a388244f5d, type: 3}
+  - {fileID: 8386033630966265269, guid: 0192c2ea8a9aec84d9bc29e9a5e9a6f4, type: 3}
+  - {fileID: 9101707167079936773, guid: e328a630180ac6546ae4ff3f7749a558, type: 3}
+  leftSpawnPoint: {fileID: 1446337526}
+  rightSpawnPoint: {fileID: 913600414}
 --- !u!1 &158612616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,7 +2391,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8926164291526522374, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1694871954}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5109534869901451210, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155329489}
   m_SourcePrefab: {fileID: 100100000, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
 --- !u!1 &245050660
 GameObject:
@@ -7505,6 +7526,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906447966}
   m_Mesh: {fileID: -1239014320205757054, guid: a9becd0c84c793a40b73537d3e5d6dee, type: 3}
+--- !u!4 &913600414 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1361922867363880439, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
+  m_PrefabInstance: {fileID: 235786963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &916677215
 GameObject:
   m_ObjectHideFlags: 0
@@ -11718,6 +11744,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441629520}
   m_Mesh: {fileID: 6129381532101950244, guid: d10b0388cfb41b8468e589d094292b1e, type: 3}
+--- !u!4 &1446337526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6612249028448887687, guid: aaa30f19c4ccd424680953489b3a8d65, type: 3}
+  m_PrefabInstance: {fileID: 235786963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446698157
 GameObject:
   m_ObjectHideFlags: 0
@@ -11998,6 +12029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1498137621}
   - component: {fileID: 1498137622}
+  - component: {fileID: 1498137623}
   m_Layer: 0
   m_Name: 'road(1) '
   m_TagString: Untagged
@@ -12142,6 +12174,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1498137623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498137620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d104581392b3649b025f24f77b6bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Road
+  edgeObstacles:
+  - {fileID: 9101707167079936773, guid: e328a630180ac6546ae4ff3f7749a558, type: 3}
+  - {fileID: 8386033630966265269, guid: 0192c2ea8a9aec84d9bc29e9a5e9a6f4, type: 3}
+  - {fileID: 5328042917490890343, guid: 3b8ba49bb2d543c488a7e7a388244f5d, type: 3}
+  leftSpawnPoint: {fileID: 1245689146}
+  rightSpawnPoint: {fileID: 1790195619}
 --- !u!1 &1509655683
 GameObject:
   m_ObjectHideFlags: 0
@@ -12153,7 +12203,7 @@ GameObject:
   - component: {fileID: 1509655685}
   - component: {fileID: 1509655684}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: ObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12171,18 +12221,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d35ce0ccb24d22428f654889fe1bbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacles
-  obstacles:
-  - {fileID: 1471697794548527952, guid: 39645082cbfcd6043a3c78cca9cf9957, type: 3}
+  player: {fileID: 2361170600073331559}
+  obstaclePrefabs:
   - {fileID: 2204329272424880329, guid: d6dfae2a068c3db44812a0086a88ede5, type: 3}
   - {fileID: 4832719095064224534, guid: 31499c36e38e48d45b29dce64a04bf0d, type: 3}
   - {fileID: 3586997164035513757, guid: 6e3bf948b92216748ab495a52c3358b9, type: 3}
+  - {fileID: 1471697794548527952, guid: 39645082cbfcd6043a3c78cca9cf9957, type: 3}
   - {fileID: 3858558625211979139, guid: f72970e1c681d5642a65cd74da75a3d9, type: 3}
-  - {fileID: 9101707167079936773, guid: e328a630180ac6546ae4ff3f7749a558, type: 3}
-  - {fileID: 8386033630966265269, guid: 0192c2ea8a9aec84d9bc29e9a5e9a6f4, type: 3}
-  - {fileID: 5328042917490890343, guid: 3b8ba49bb2d543c488a7e7a388244f5d, type: 3}
   - {fileID: 5644373148726279686, guid: ef9429093d184f847bf45d5ed35a3fb3, type: 3}
   - {fileID: 1081848774364407594, guid: eafc6b8f15694524c9c3ebc9cdf54897, type: 3}
   - {fileID: 8420670189832825703, guid: 843be2ed67fd7214b9ef1afccd315fbd, type: 3}
+  spawnIntervalZ: 100
+  initialSpawnDistance: 100
+  maintainAheadDistance: 100
+  laneXRange: 6
 --- !u!4 &1509655685
 Transform:
   m_ObjectHideFlags: 0
@@ -12192,7 +12244,7 @@ Transform:
   m_GameObject: {fileID: 1509655683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.25098, y: 0.77137, z: -18.80936}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15647,8 +15699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b2d8004bc242b48b4f6421e5cbd6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  roadSpawner: {fileID: 0}
-  obstacleSpawner: {fileID: 0}
+  roadSpawner: {fileID: 1977253799}
 --- !u!114 &1977253799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15871,6 +15922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047921965}
   - component: {fileID: 2047921966}
+  - component: {fileID: 2047921967}
   m_Layer: 0
   m_Name: road(2)
   m_TagString: Untagged
@@ -16017,6 +16069,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2047921967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047921964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d104581392b3649b025f24f77b6bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Road
+  edgeObstacles:
+  - {fileID: 9101707167079936773, guid: e328a630180ac6546ae4ff3f7749a558, type: 3}
+  - {fileID: 5328042917490890343, guid: 3b8ba49bb2d543c488a7e7a388244f5d, type: 3}
+  - {fileID: 8386033630966265269, guid: 0192c2ea8a9aec84d9bc29e9a5e9a6f4, type: 3}
+  leftSpawnPoint: {fileID: 47357307}
+  rightSpawnPoint: {fileID: 158612617}
 --- !u!4 &2049611295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4334209177326831359, guid: c7ab40e76bf26bb4b97268e5aa252143, type: 3}

@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class TestCameraController : MonoBehaviour
 {
@@ -9,15 +7,19 @@ public class TestCameraController : MonoBehaviour
     private float yOffset = 5f;
     private float zOffset = -9f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player").transform;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x ,player.position.y + yOffset, player.position.z + zOffset);
+        if (player == null) return;
+
+        transform.position = new Vector3(
+            player.position.x,
+            player.position.y + yOffset,
+            player.position.z + zOffset
+        );
     }
 }

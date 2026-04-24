@@ -1,68 +1,65 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    public GameObject obstaclePrefab;
     public Transform player;
-    public List<GameObject> obstaclePrefabs;
+    public Transform[] lanePoints;
 
-    public float spawnIntervalZ = 5f;
-    public float initialSpawnDistance = 200f;
-    public float maintainAheadDistance = 100f;
-    public float laneXRange = 8.6f;
+    public float spawnDistance = 40f; // how far ahead of player to spawn
+    public float rowSpacing = 20f;    // distance between rows
+    public float spawnDelay = 0.25f;  // how fast rows spawn
 
     private float nextSpawnZ;
+    private float timer;
 
     void Start()
     {
-        if (obstaclePrefabs == null || obstaclePrefabs.Count == 0)
-        {
-            Debug.LogError("NO OBSTACLES ASSIGNED");
-            return;
-        }
-
-        nextSpawnZ = player.position.z;
-
-        float endZ = player.position.z + initialSpawnDistance;
-
-        while (nextSpawnZ < endZ)
-        {
-            SpawnObstacle(nextSpawnZ);
-            nextSpawnZ += spawnIntervalZ;
-        }
+        nextSpawnZ = player.position.z + spawnDistance;
     }
 
     void Update()
     {
-        float targetZ = player.position.z + maintainAheadDistance;
+        if (GameState.isGameOver) return;
+        if (!GameState.isGameStarted) return;
 
-        while (nextSpawnZ < targetZ)
-        {
-            SpawnObstacle(nextSpawnZ);
-            nextSpawnZ += spawnIntervalZ;
-        }
+        timer += Time.deltaTime;
 
-        Cleanup();
+        if (timer < spawnDelay) return;
+
+        // ensure we always stay ahead of player
+        float minZ = player.position.z + spawnDistance;
+
+        if (nextSpawnZ < minZ)
+            nextSpawnZ = minZ;
+
+        SpawnRow();
+
+        nextSpawnZ += rowSpacing;
+        timer = 0f;
     }
 
-    void SpawnObstacle(float z)
+    void SpawnRow()
     {
-        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
+        if (lanePoints == null || lanePoints.Length == 0) return;
 
-        float x = Random.Range(-laneXRange, laneXRange);
+        int safeLane = Random.Range(0, lanePoints.Length);
 
-        Instantiate(prefab, new Vector3(x, 0.25f, z), Quaternion.identity);
-    }
-
-    void Cleanup()
-    {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Obstacle");
-
-        foreach (GameObject obj in objs)
+        for (int i = 0; i < lanePoints.Length; i++)
         {
-            if (obj.transform.position.z < player.position.z - 30f)
+            if (i == safeLane) continue;
+
+            if (Random.value < 0.9f)
             {
-                Destroy(obj);
+                Vector3 lane = lanePoints[i].position;
+
+                Vector3 pos = new Vector3(
+                    lane.x,
+                    lane.y,
+                    nextSpawnZ
+                );
+
+                Instantiate(obstaclePrefab, pos, Quaternion.identity);
             }
         }
     }
